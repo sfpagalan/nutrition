@@ -1,0 +1,269 @@
+body {
+    margin: 0;
+    background: linear-gradient(135deg, #ffe6e6, #ffccff);
+    font-family: 'Balsamiq Sans', sans-serif;  /* Updated Font */
+}
+
+h1, h2, p, .btn, .score-board p {
+    font-family: 'Balsamiq Sans', sans-serif;  /* Apply to all elements */
+}
+
+h1 {
+    font-weight: 700;  /* Bold for titles */
+    color: #ff6f61;
+    text-shadow: 2px 2px #ff8566;
+}
+
+.score-board p, .btn {
+    font-weight: 400;  /* Normal for buttons and scoreboard */
+}
+
+p {
+    font-weight: 500;  /* Slightly bolder for regular text */
+}
+
+
+/* Scoreboard Style */
+.score-board {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0px;
+    padding: 10px 10px;
+    margin: 0 auto;
+    background: linear-gradient(135deg, #ff8a80, #ff6f61);
+    border-radius: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    /* max-width: 400px; */
+    color: #fff;
+    position: absolute;   /* Absolute positioning */
+    top: 40px;            /* Fixed to top of game board */
+    left: 50%;            /* Center horizontally */
+    transform: translateX(-50%);  /* Align to center */
+    z-index: 20;
+}
+
+.score-board p {
+    margin: 0;
+    padding: 0 10px;
+    font-size: 18px;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+}
+
+/* Improved Button Styles */
+.btn {
+    background-color: #ff6f61;
+    border: none;
+    color: white;
+    padding: 10px 20px;
+    margin: 5px;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: transform 0.3s ease, background-color 0.3s ease;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+}
+
+.btn:hover {
+    transform: scale(1.1);
+    background-color: #ff8566;
+    box-shadow: 0 6px 8px rgba(0, 0, 0, 0.3);
+}
+
+/* Center Scoreboard in Game Screen */
+.game-board {
+    display: grid;
+    grid-template-columns: 1fr;
+    justify-content: center;
+    align-items: center;
+    background-image: url('images/whiteclouds.jpg');
+    background-size: cover;
+    border: 2px solid #ff6f61;
+    border-radius: 10px;
+    margin-top: 20px;
+    height: 500px;
+    overflow: hidden;
+    padding-top: 60px;  /* Extra space for scoreboard */
+    position: relative;
+}
+
+
+.modal-screen {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 100;
+}
+
+.modal-screen {
+    background-color: rgba(0, 0, 0, 0.8);
+}
+
+.modal-content {
+    background-color: #fff;
+    padding: 30px;
+    border-radius: 10px;
+    text-align: center;
+    max-width: 500px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+}
+
+.game-container.hidden {
+    display: none;
+}
+
+.game-container {
+    text-align: center;
+    padding: 20px;
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+h1 {
+    color: #ff6f61;
+    text-shadow: 2px 2px #ff8566;
+}
+
+.btn {
+    background-color: #ff6f61;
+    border: none;
+    color: white;
+    padding: 10px 20px;
+    margin: 5px;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+
+.btn:hover {
+    transform: scale(1.1);
+    background-color: #ff8566;
+}
+
+.hidden {
+    display: none;
+}
+
+.game-board {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    background-image: url('images/whiteclouds.jpg');
+    background-size: cover;
+    border: 2px solid #ff6f61;
+    border-radius: 10px;
+    margin-top: 20px;
+    height: 400px;
+    overflow: hidden;
+}
+
+.left-side, .right-side {
+    position: relative;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 20px;
+    align-content: center;
+    justify-content: center;
+    padding: 10px;
+}
+
+.enemy {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 5px solid rgb(230, 58, 129);
+    animation: moveRight 5s ease-in-out infinite alternate;
+    transition: transform 0.5s, opacity 0.5s;
+}
+
+.ally {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 5px solid rgb(13, 227, 17);
+    animation: moveLeft 5s ease-in-out infinite alternate;
+    transition: transform 0.5s, opacity 0.5s;
+}
+
+/* Keyframes for enemies on the right side */
+@keyframes moveRight {
+    0% { transform: translateX(0); }
+    50% { transform: translateX(-10px); }
+    100% { transform: translateX(0); }
+}
+
+/* Keyframes for allies on the left side */
+@keyframes moveLeft {
+    0% { transform: translateX(0); }
+    50% { transform: translateX(10px); }
+    100% { transform: translateX(0); }
+}
+
+.enemy.disappear, .ally.disappear {
+    transform: scale(0);
+    opacity: 0;
+}
+
+.btn-grid {
+    display: grid;
+    grid-template-columns: repeat(2, auto);
+    gap: 10px;
+    margin-top: 20px;
+}
+
+#question-container {
+    position: relative;
+    z-index: 10;
+}
+
+#statistics-screen {
+    display: none;
+    background-color: rgba(255, 255, 255, 0.9);
+    text-align: center;
+    padding: 20px;
+    border-radius: 10px;
+    margin-top: 20px;
+    max-width: 600px;
+    margin: 20px auto;
+    border: 2px solid #ff6f61;
+}
+
+#lifestyleChart {
+    display: block;
+    margin: 20px auto;  /* Centers the chart horizontally */
+}
+
+.stats-container {
+    display: flex;
+    justify-content: center;  /* Center the summary text horizontally */
+    flex-wrap: wrap;          /* Allow wrapping if needed */
+    gap: 20px;                /* Add space between sections */
+}
+
+.stats-section {
+    width: 45%;
+    border: 1px solid #ff6f61;
+    border-radius: 10px;
+    padding: 10px;
+    background-color: #fff0f5;
+    text-align: center;  /* Center align text inside each section */
+}
+
+#statistics-screen {
+    display: none;
+    text-align: center;  /* Center align text in statistics screen */
+    padding: 20px;
+    border-radius: 10px;
+    margin-top: 20px;
+    max-width: 600px;
+    margin: 20px auto;
+    border: 2px solid #ff6f61;
+    background-color: rgba(255, 255, 255, 0.9);
+}
+

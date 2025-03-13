@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nutrition Defense Quiz</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- Chart.js Library -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <!-- Google Fonts: Balsamiq Sans -->
+    <link href="https://fonts.googleapis.com/css2?family=Balsamiq+Sans:wght@400;700&display=swap" rel="stylesheet">
+
+</head>
+
+<body>
+
+
+<!-- Modal for Game Description -->
+<div id="modal-screen" class="modal-screen">
+    <div class="modal-content">
+        <h1>Welcome to Nutrition Defense Quiz!</h1>
+        <p>Test your knowledge about managing Type 2 Diabetes by defeating unhealthy foods with the power of your knowledge!</p>
+        <button id="start-btn" class="btn">Start Game</button>
+    </div>
+</div>
+
+<div class="game-container hidden">
+    <h1>Welcome to Nutrition Defense Quiz!</h1>
+    <p>Your knowledge of Type 2 Diabetes management decides which foods stay — keep the healthy ones and eliminate the bad ones!</p>
+    <div id="game-board" class="game-board">
+        <div class="left-side"></div>
+        <div class="right-side"></div>
+        <div class="score-board">
+            <p>Score: <span id="score">0</span></p>
+            <p>Health: <span id="health">100%</span></p>
+        </div>
+    </div>
+
+    <div id="question-container" class="hidden">
+        <h2 id="question"></h2>
+        <div id="answer-buttons" class="btn-grid"></div>
+    </div>
+
+    <div id="statistics-screen" class="hidden"></div>
+
+    <audio id="correct-sound" src="sounds/fairy.wav"></audio>
+    <audio id="wrong-sound" src="sounds/wrong.wav"></audio>
+</div>
+
+<script src="script.js"></script>
+</body>
+
+</html>
