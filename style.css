@@ -1,25 +1,107 @@
 body {
     margin: 0;
     background: linear-gradient(135deg, #ffe6e6, #ffccff);
-    font-family: 'Balsamiq Sans', sans-serif;  /* Updated Font */
+    font-family: 'Balsamiq Sans', sans-serif;
 }
 
 h1, h2, p, .btn, .score-board p {
-    font-family: 'Balsamiq Sans', sans-serif;  /* Apply to all elements */
+    font-family: 'Balsamiq Sans', sans-serif;
 }
 
 h1 {
-    font-weight: 700;  /* Bold for titles */
+    font-weight: 700;
     color: #ff6f61;
     text-shadow: 2px 2px #ff8566;
 }
 
 .score-board p, .btn {
-    font-weight: 400;  /* Normal for buttons and scoreboard */
+    font-weight: 400;
 }
 
 p {
-    font-weight: 500;  /* Slightly bolder for regular text */
+    font-weight: 500;
+}
+
+/* Meal Plan Generator Modal */
+/* #meal-modal {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+    text-align: center;
+    width: 500px;
+    max-height: 80vh;
+    overflow-y: auto;
+    z-index: 200;
+} */
+
+#meal-modal.hidden {
+    display: none;
+}
+
+/* Meal Plan Result Styling */
+#meal-result {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin-top: 20px;
+    gap: 15px;
+}
+
+.meal-card {
+    width: 48%;
+    background: #f9f9f9;
+    padding: 15px;
+    border-radius: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+.meal-card h3 {
+    font-size: 18px;
+    margin-bottom: 10px;
+}
+
+.meal-card img {
+    width: 100%;
+    max-height: 150px;
+    object-fit: cover;
+    border-radius: 10px;
+}
+
+.meal-card ul {
+    list-style: none;
+    padding: 0;
+    text-align: left;
+    margin-top: 10px;
+}
+
+.meal-card ul li {
+    background: #ff6f61;
+    color: white;
+    padding: 5px;
+    margin: 3px 0;
+    border-radius: 5px;
+    font-size: 14px;
+}
+
+/* Close Button for Meal Plan Modal */
+.close-modal {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+    color: #ff6f61;
+}
+
+.close-modal:hover {
+    color: #ff8566;
 }
 
 
@@ -267,3 +349,128 @@ h1 {
     background-color: rgba(255, 255, 255, 0.9);
 }
 
+#meal-modal, #meal-result {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+    text-align: center;
+    width: 400px;
+}
+
+#meal-modal.hidden, #meal-result.hidden {
+    display: none;
+}
+
+#meal-result img {
+    width: 100%;
+    max-height: 200px;
+    object-fit: cover;
+    border-radius: 10px;
+    margin-bottom: 10px;
+}
+
+#meal-result ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+#meal-result ul li {
+    background: #ff6f61;
+    color: white;
+    padding: 5px;
+    margin: 5px;
+    border-radius: 5px;
+}
+
+
+.meal-generator {
+    text-align: center;
+    max-width: 600px;
+    margin: 20px auto;
+    padding: 20px;
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+label {
+    font-weight: bold;
+    margin-top: 10px;
+    display: block;
+}
+
+select {
+    width: 100%;
+    padding: 8px;
+    margin: 10px 0;
+    border-radius: 5px;
+    border: 1px solid #ddd;
+}
+
+#loading-screen {
+    font-size: 18px;
+    color: #ff6f61;
+    margin: 20px;
+}
+
+.hidden {
+    display: none;
+}
+
+.meal-container {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    margin-top: 20px;
+}
+
+.meal-card {
+    width: 30%;
+    padding: 10px;
+    background: #f9f9f9;
+    border-radius: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.meal-card img {
+    width: 100%;
+    border-radius: 8px;
+    margin-top: 10px;
+}
+
+/* Meal Plan Generator Modal */
+/* Meal Plan Generator Modal */
+
+
+/* Centered and Fixed-Height Modal */
+.modal-content {
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+    max-width: 600px;
+    width: 90%;
+    max-height: 90vh; /* Prevents the modal from being too long */
+    overflow-y: auto; /* Adds scroll inside modal if content is too long */
+    position: relative;
+}
+
+/* Close Button for Modal */
+.close-modal {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+    color: #ff6f61;
+}
+
+.close-modal:hover {
+    color: #ff8566;
+}

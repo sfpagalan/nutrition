@@ -1,0 +1,168 @@
+{
+    "breakfast": {
+        "balanced": [
+            {
+                "name": "Oatmeal with Berries",
+                "image": "images/meals/oatmeal.png",
+                "description": "A fiber-rich breakfast that helps regulate blood sugar.",
+                "ingredients": ["Oats", "Almond Milk", "Blueberries", "Chia Seeds", "Cinnamon"]
+            },
+            {
+                "name": "Whole Wheat Toast with Peanut Butter",
+                "image": "images/meals/peanut_toast.png",
+                "description": "A balanced mix of complex carbs and healthy fats.",
+                "ingredients": ["Whole Wheat Bread", "Natural Peanut Butter", "Banana Slices", "Chia Seeds"]
+            },
+            {
+                "name": "Greek Yogurt Parfait",
+                "image": "images/meals/greek_parfait.png",
+                "description": "A high-protein yogurt layered with nuts and seeds.",
+                "ingredients": ["Greek Yogurt", "Almonds", "Honey", "Chia Seeds", "Blueberries"]
+            }
+        ],
+        "keto": [
+            {
+                "name": "Avocado and Scrambled Eggs",
+                "image": "images/meals/keto_eggs.png",
+                "description": "High in healthy fats and protein for sustained energy.",
+                "ingredients": ["Avocado", "Eggs", "Olive Oil", "Cheese", "Spinach"]
+            },
+            {
+                "name": "Keto Chia Seed Pudding",
+                "image": "images/meals/keto_chia.png",
+                "description": "A low-carb pudding with high fiber content.",
+                "ingredients": ["Chia Seeds", "Coconut Milk", "Stevia", "Vanilla Extract"]
+            },
+            {
+                "name": "Almond Flour Pancakes",
+                "image": "images/meals/keto_pancakes.png",
+                "description": "Fluffy pancakes with zero refined carbs.",
+                "ingredients": ["Almond Flour", "Eggs", "Coconut Oil", "Cinnamon", "Stevia"]
+            }
+        ],
+        "vegetarian": [
+            {
+                "name": "Tofu Scramble with Spinach",
+                "image": "images/meals/tofu_scramble.png",
+                "description": "A plant-based alternative to scrambled eggs.",
+                "ingredients": ["Tofu", "Turmeric", "Spinach", "Tomatoes", "Peppers"]
+            },
+            {
+                "name": "Smoothie Bowl",
+                "image": "images/meals/smoothie_bowl.png",
+                "description": "A refreshing fruit smoothie with protein-packed toppings.",
+                "ingredients": ["Banana", "Almond Milk", "Chia Seeds", "Berries", "Granola"]
+            },
+            {
+                "name": "Whole Grain Cereal with Almond Milk",
+                "image": "images/meals/cereal_almond.png",
+                "description": "A fiber-rich start to the day.",
+                "ingredients": ["Whole Grain Cereal", "Almond Milk", "Flaxseeds", "Strawberries"]
+            }
+        ]
+    },
+    "lunch": {
+        "balanced": [
+            {
+                "name": "Grilled Chicken Salad",
+                "image": "images/meals/chicken_salad.png",
+                "description": "A protein-packed meal with fresh greens and healthy fats.",
+                "ingredients": ["Grilled Chicken", "Mixed Greens", "Avocado", "Olive Oil", "Cherry Tomatoes"]
+            },
+            {
+                "name": "Lentil Soup with Whole Wheat Bread",
+                "image": "images/meals/lentil_soup.png",
+                "description": "A hearty, fiber-rich meal for stable blood sugar.",
+                "ingredients": ["Lentils", "Carrots", "Celery", "Tomatoes", "Whole Wheat Bread"]
+            },
+            {
+                "name": "Salmon and Quinoa Bowl",
+                "image": "images/meals/salmon_quinoa.png",
+                "description": "Omega-3 rich salmon with fiber-packed quinoa.",
+                "ingredients": ["Salmon", "Quinoa", "Spinach", "Lemon", "Olive Oil"]
+            }
+        ],
+        "keto": [
+            {
+                "name": "Cauliflower Rice with Grilled Chicken",
+                "image": "images/meals/keto_chicken_rice.png",
+                "description": "A low-carb alternative with high protein.",
+                "ingredients": ["Cauliflower Rice", "Chicken Breast", "Garlic", "Olive Oil"]
+            },
+            {
+                "name": "Zucchini Noodles with Pesto",
+                "image": "images/meals/zoodles_pesto.png",
+                "description": "A pasta alternative made from zucchini with a rich pesto sauce.",
+                "ingredients": ["Zucchini", "Basil Pesto", "Parmesan", "Pine Nuts", "Garlic"]
+            },
+            {
+                "name": "Avocado Tuna Salad",
+                "image": "images/meals/keto_tuna.png",
+                "description": "A creamy high-fat, low-carb lunch option.",
+                "ingredients": ["Avocado", "Tuna", "Mayo", "Celery", "Lemon Juice"]
+            }
+        ],
+        "vegetarian": [
+            {
+                "name": "Quinoa and Black Bean Salad",
+                "image": "images/meals/quinoa_salad.png",
+                "description": "A nutrient-rich salad with plant-based protein.",
+                "ingredients": ["Quinoa", "Black Beans", "Bell Peppers", "Lime", "Cilantro"]
+            },
+            {
+                "name": "Chickpea and Spinach Stir Fry",
+                "image": "images/meals/chickpea_spinach.png",
+                "description": "A simple and flavorful dish packed with protein.",
+                "ingredients": ["Chickpeas", "Spinach", "Garlic", "Olive Oil", "Paprika"]
+            },
+            {
+                "name": "Grilled Veggie Sandwich",
+                "image": "images/meals/veggie_sandwich.png",
+                "description": "A delicious plant-based sandwich on whole grain bread.",
+                "ingredients": ["Whole Grain Bread", "Bell Peppers", "Zucchini", "Hummus", "Lettuce"]
+            }
+        ]
+    },
+    "dinner": {
+        "balanced": [
+            {
+                "name": "Grilled Salmon with Vegetables",
+                "image": "images/meals/salmon_veggies.png",
+                "description": "A heart-healthy, omega-3 rich meal.",
+                "ingredients": ["Salmon", "Asparagus", "Olive Oil", "Garlic", "Lemon"]
+            },
+            {
+                "name": "Chicken Stir Fry with Brown Rice",
+                "image": "images/meals/chicken_stirfry.png",
+                "description": "A balanced meal with lean protein and fiber.",
+                "ingredients": ["Chicken Breast", "Brown Rice", "Bell Peppers", "Soy Sauce"]
+            },
+            {
+                "name": "Baked Sweet Potato with Lentils",
+                "image": "images/meals/sweet_potato_lentils.png",
+                "description": "A fiber-packed vegetarian dish.",
+                "ingredients": ["Sweet Potato", "Lentils", "Spinach", "Olive Oil"]
+            }
+        ],
+        "keto": [
+            {
+                "name": "Steak with Buttered Spinach",
+                "image": "images/meals/keto_steak.png",
+                "description": "A high-fat, high-protein meal perfect for keto diets.",
+                "ingredients": ["Steak", "Butter", "Spinach", "Garlic"]
+            },
+            {
+                "name": "Baked Chicken Thighs with Cauliflower Mash",
+                "image": "images/meals/keto_chicken_thighs.png",
+                "description": "A delicious and filling meal with a creamy low-carb mash.",
+                "ingredients": ["Chicken Thighs", "Cauliflower", "Cream", "Butter"]
+            },
+            {
+                "name": "Keto Meatballs with Cheese Sauce",
+                "image": "images/meals/keto_meatballs.png",
+                "description": "Juicy meatballs covered in a rich, creamy cheese sauce.",
+                "ingredients": ["Ground Beef", "Parmesan", "Cream", "Eggs", "Herbs"]
+            }
+        ]
+    }
+}

@@ -10,40 +10,107 @@ const healthElement = document.getElementById('health');
 const statisticsScreen = document.getElementById('statistics-screen');
 const correctSound = document.getElementById('correct-sound');
 const wrongSound = document.getElementById('wrong-sound');
+const mealModal = document.getElementById('meal-modal');
+const mealResult = document.getElementById('meal-result');
+const loadingScreen = document.getElementById('loading-screen');
+const mealPlanBtn = document.getElementById('meal-plan-btn'); // First button (Statistics Screen)
+const generateMealButton = document.getElementById('generate-meal-btn'); // Second button (Modal)
 
 let score = 0;
 let health = 100;
 let currentQuestionIndex = 0;
 let goodFoodCount = 0;
 let badFoodCount = 0;
+let mealData = null;
 
-// Define enemy and ally images
+// Fetch Meal Data
+fetch('meals.json')
+    .then(response => {
+        if (!response.ok) {
+            throw new Error("Failed to load meal data.");
+        }
+        return response.json();
+    })
+    .then(data => {
+        mealData = data;
+        console.log("Meal JSON Loaded:", mealData);
+    })
+    .catch(error => console.error("Error loading meals.json:", error));
+
+// First Button: Open Meal Plan Generator Modal from Statistics Screen
+if (mealPlanBtn) {
+    mealPlanBtn.addEventListener('click', () => {
+        mealModal.classList.remove('hidden');
+        statisticsScreen.classList.add('hidden');
+    });
+}
+
+// Second Button: Generate Meal Plan Inside Modal
+if (generateMealButton) {
+    generateMealButton.addEventListener('click', () => {
+        if (!mealData) {
+            console.error("Meal data is not available yet!");
+            return;
+        }
+        
+        const dietPreference = document.getElementById('diet').value;
+        console.log("Selected Diet:", dietPreference);
+        
+        loadingScreen.classList.remove('hidden');
+        mealResult.classList.add('hidden');
+        
+        setTimeout(() => {
+            loadingScreen.classList.add('hidden');
+            mealResult.classList.remove('hidden');
+
+            const breakfast = getRandomMeal(mealData.breakfast[dietPreference]);
+            const lunch = getRandomMeal(mealData.lunch[dietPreference]);
+            const dinner = getRandomMeal(mealData.dinner[dietPreference]);
+
+            if (!breakfast || !lunch || !dinner) {
+                console.error("Meal selection failed!");
+                return;
+            }
+
+            document.getElementById('breakfast').innerHTML = formatMealCard(breakfast);
+            document.getElementById('lunch').innerHTML = formatMealCard(lunch);
+            document.getElementById('dinner').innerHTML = formatMealCard(dinner);
+        }, 1500);
+    });
+}
+
+function getRandomMeal(arr) {
+    return arr[Math.floor(Math.random() * arr.length)];
+}
+
+function formatMealCard(meal) {
+    return `<h3>${meal.name}</h3>
+            <img src="${meal.image}" alt="${meal.name}">
+            <p>${meal.description}</p>
+            <ul>${meal.ingredients.map(ingredient => `<li>${ingredient}</li>`).join('')}</ul>`;
+}
+
+document.querySelectorAll(".close-modal").forEach(button => {
+    button.addEventListener("click", () => {
+        mealModal.classList.add('hidden');
+        statisticsScreen.classList.remove('hidden');
+    });
+});
+
+// Enemy and Ally Images
 const enemyImages = [
-    'images/enemies/bread.png',
-    'images/enemies/cookies.png',
-    'images/enemies/fries.png',
-    'images/enemies/icecream.png',
-    'images/enemies/soda.png',
-    'images/enemies/donut.png',
-    'images/enemies/liquior.png',
-    'images/enemies/canned.png',
-    'images/enemies/pork.png'
+    'images/enemies/bread.png', 'images/enemies/cookies.png', 'images/enemies/fries.png',
+    'images/enemies/icecream.png', 'images/enemies/soda.png', 'images/enemies/donut.png',
+    'images/enemies/liquior.png', 'images/enemies/canned.png', 'images/enemies/pork.png'
 ];
 
 const allyImages = [
-    'images/allies/broccoli.png',
-    'images/allies/almonds.png',
-    'images/allies/apple.png',
-    'images/allies/avocado.png',
-    'images/allies/banana.png',
-    'images/allies/salmon.png',
-    'images/allies/oatmeal.png',
-    'images/allies/eggs.png',
-    'images/allies/berries.png'
-
+    'images/allies/broccoli.png', 'images/allies/almonds.png', 'images/allies/apple.png',
+    'images/allies/avocado.png', 'images/allies/banana.png', 'images/allies/salmon.png',
+    'images/allies/oatmeal.png', 'images/allies/eggs.png', 'images/allies/berries.png'
 ];
 
-// Define questions
+// Define Quiz Questions
 const questions = [
     { question: "Which is a complex carbohydrate?", answers: [{ text: "White bread", correct: false }, { text: "Brown rice", correct: true }] },
     { question: "Which type of fat is healthy?", answers: [{ text: "Trans fat", correct: false }, { text: "Monounsaturated fat", correct: true }] },
@@ -55,12 +122,11 @@ const questions = [
     { question: "Which drink is better for diabetics?", answers: [{ text: "Water", correct: true }, { text: "Soda", correct: false }] }
 ];
 
-// Close modal and start game
+// Start Game
 startButton.addEventListener('click', () => {
     modalScreen.style.display = 'none';
     gameContainer.classList.remove('hidden');
-    gameBoard.classList.remove('hidden');
-    questionContainer.classList.remove('hidden');
+    questionContainer.classList.remove('hidden'); // Ensure question container is visible
     startGame();
 });
 
@@ -76,11 +142,10 @@ function startGame() {
     setNextQuestion();
 }
 
+// Spawn Food on Both Sides
 function spawnFoods() {
-    const leftSide = document.querySelector('.left-side');
-    const rightSide = document.querySelector('.right-side');
-    leftSide.innerHTML = '';  // Clear previous foods
-    rightSide.innerHTML = '';  // Clear previous foods
+    document.querySelector('.left-side').innerHTML = '';
+    document.querySelector('.right-side').innerHTML = '';
 
     enemyImages.forEach(imgSrc => spawnFood(imgSrc, 'enemy', '.right-side'));
     allyImages.forEach(imgSrc => spawnFood(imgSrc, 'ally', '.left-side'));
@@ -90,15 +155,8 @@ function spawnFood(imgSrc, type, side) {
     const food = document.createElement('img');
     food.src = imgSrc;
     food.classList.add(type);
-
-    // Ensure enemies go to the right, allies go to the left
-    if (type === 'enemy') {
-        document.querySelector('.right-side').appendChild(food);
-    } else {
-        document.querySelector('.left-side').appendChild(food);
-    }
+    document.querySelector(side).appendChild(food);
 }
-
 
 function eliminateFood(type) {
     const foods = document.querySelectorAll(`.${type}`);
@@ -109,10 +167,13 @@ function eliminateFood(type) {
     }
 }
 
-
 function setNextQuestion() {
     resetState();
-    showQuestion(questions[currentQuestionIndex]);
+    if (currentQuestionIndex < questions.length) {
+        showQuestion(questions[currentQuestionIndex]);
+    } else {
+        endGame();
+    }
 }
 
 function showQuestion(question) {
@@ -128,7 +189,7 @@ function showQuestion(question) {
 }
 
 function resetState() {
-    answerButtonsElement.innerHTML = '';
+    answerButtonsElement.innerHTML = ''; // Clear previous answers
 }
 
 function selectAnswer(e) {
@@ -152,20 +213,17 @@ function selectAnswer(e) {
 }
 
 function endGame() {
-    // Hide game elements
     gameBoard.style.display = 'none';
     questionContainer.style.display = 'none';
     document.querySelector('.score-board').style.display = 'none';
-    
-    // Replace with statistics screen
     showStatistics();
 }
 
+// Show Statistics and Meal Plan Option
 function showStatistics() {
     const totalFoods = goodFoodCount + badFoodCount;
     const healthyPercentage = Math.round((badFoodCount / totalFoods) * 100);
     const unhealthyPercentage = Math.round((goodFoodCount / totalFoods) * 100);
-
     statisticsScreen.innerHTML = `
         <h2>Lifestyle Assessment</h2>
         <div class="stats-summary">
@@ -182,9 +240,9 @@ function showStatistics() {
         <p><strong>Remember:</strong> Consistently making the right choices can significantly impact managing diabetes effectively. Keep learning and strive to improve your lifestyle!</p>
         
         <button onclick="location.reload()" class="btn">Play Again</button>
+        <button id="meal-plan-btn" class="btn">Generate Meal Plan</button>
     `; // ✅ Closing template string correctly
 
-    // Ensure statistics screen is visible
     statisticsScreen.style.display = 'block';
     statisticsScreen.style.marginTop = '20px';
     statisticsScreen.style.border = '2px solid #ff6f61';
@@ -235,4 +293,41 @@ function showStatistics() {
             }
         });
     }, 100); // Small delay to ensure the canvas element is present
+
+    document.getElementById('meal-plan-btn').addEventListener('click', () => {
+        mealModal.classList.remove('hidden');
+        statisticsScreen.classList.add('hidden');
+    });
 }
+
+// ✅ Fix: Close Meal Generator
+function closeMealGenerator() {
+    mealModal.classList.add('hidden');
+    statisticsScreen.classList.remove('hidden');
+}
+
+// ✅ Fix: Restart Meal Generator
+function restartMealGenerator() {
+    document.getElementById('meal-result').classList.add('hidden');
+    document.getElementById('meal-generator').classList.remove('hidden');
+}
+
+// ✅ Attach event listener for close button
+document.querySelectorAll(".close-modal").forEach(button => {
+    button.addEventListener("click", closeMealGenerator);
+});
+
+// Function to Generate Random Meal
+function getRandomMeal(arr) {
+    return arr[Math.floor(Math.random() * arr.length)];
+}
+
+// Format Meal Display
+function formatMealCard(meal) {
+    return `<h3>${meal.name}</h3><img src="${meal.image}" alt="${meal.name}"><p>${meal.description}</p>`;
+}
+
+document.getElementById('generate-meal-btn').addEventListener('click', () => {
+    console.log("Generate Meal Plan button clicked!");
+});
+

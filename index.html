@@ -48,6 +48,52 @@
     <audio id="wrong-sound" src="sounds/wrong.wav"></audio>
 </div>
 
+<!-- Meal Plan Generator Modal (Hidden by Default) -->
+<div id="meal-modal" class="modal hidden">
+    <div class="modal-content">
+        <span class="close-modal" onclick="closeMealGenerator()">&times;</span> <!-- Close Button -->
+        <span class="close-modal">&times;</span>
+        <h2>Personalized Meal Plan Generator</h2>
+
+        <label for="age-range">Select Your Age Range:</label>
+        <select id="age-range">
+            <option value="18-29">18-29</option>
+            <option value="30-49">30-49</option>
+            <option value="50-64">50-64</option>
+            <option value="65+">65+</option>
+        </select>
+
+        <label for="diet">Select Your Dietary Preference:</label>
+        <select id="diet">
+            <option value="balanced">Balanced</option>
+            <option value="keto">Keto</option>
+            <option value="vegetarian">Vegetarian</option>
+        </select>
+
+        <button id="generate-meal-btn" class="btn">Generate Meal Plan</button>
+
+        <!-- Loading Screen -->
+        <div id="loading-screen" class="hidden">
+            <p>Generating your meal plan...</p>
+        </div>
+
+        <!-- Display Meal Plan -->
+        <div id="meal-result" class="hidden">
+            <h3>Here’s Your Personalized Meal Plan:</h3>
+
+            <div class="meal-container">
+                <div id="breakfast" class="meal-card"></div>
+                <div id="lunch" class="meal-card"></div>
+                <div id="dinner" class="meal-card"></div>
+            </div>
+
+            <button onclick="restartMealGenerator()" class="btn">Generate Another Plan</button>
+            <button onclick="closeMealGenerator()" class="btn">Close</button>
+        </div>
+    </div>
+</div>
+
+
 <script src="script.js"></script>
 </body>
 
