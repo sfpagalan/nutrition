@@ -111,16 +111,74 @@ const allyImages = [
 ];
 
 // Define Quiz Questions
+// const questions = [
+//     { question: "Which is a complex carbohydrate?", answers: [{ text: "White bread", correct: false }, { text: "Brown rice", correct: true }] },
+//     { question: "Which type of fat is healthy?", answers: [{ text: "Trans fat", correct: false }, { text: "Monounsaturated fat", correct: true }] },
+//     { question: "Which food is high in fiber?", answers: [{ text: "Broccoli", correct: true }, { text: "Soda", correct: false }] },
+//     { question: "Which vitamin helps control blood sugar?", answers: [{ text: "Vitamin D", correct: true }, { text: "Vitamin C", correct: false }] },
+//     { question: "Best fruit for diabetics?", answers: [{ text: "Berries", correct: true }, { text: "Banana", correct: false }] },
+//     { question: "Which type of exercise is best for diabetes?", answers: [{ text: "Aerobic", correct: true }, { text: "None", correct: false }] },
+//     { question: "What is a good snack for diabetics?", answers: [{ text: "Nuts", correct: true }, { text: "Candy", correct: false }] },
+//     { question: "Which drink is better for diabetics?", answers: [{ text: "Water", correct: true }, { text: "Soda", correct: false }] }
+// ];
+
 const questions = [
-    { question: "Which is a complex carbohydrate?", answers: [{ text: "White bread", correct: false }, { text: "Brown rice", correct: true }] },
-    { question: "Which type of fat is healthy?", answers: [{ text: "Trans fat", correct: false }, { text: "Monounsaturated fat", correct: true }] },
-    { question: "Which food is high in fiber?", answers: [{ text: "Broccoli", correct: true }, { text: "Soda", correct: false }] },
-    { question: "Which vitamin helps control blood sugar?", answers: [{ text: "Vitamin D", correct: true }, { text: "Vitamin C", correct: false }] },
-    { question: "Best fruit for diabetics?", answers: [{ text: "Berries", correct: true }, { text: "Banana", correct: false }] },
-    { question: "Which type of exercise is best for diabetes?", answers: [{ text: "Aerobic", correct: true }, { text: "None", correct: false }] },
-    { question: "What is a good snack for diabetics?", answers: [{ text: "Nuts", correct: true }, { text: "Candy", correct: false }] },
-    { question: "Which drink is better for diabetics?", answers: [{ text: "Water", correct: true }, { text: "Soda", correct: false }] }
-];
+    {
+      question: "You have Type 2 Diabetes. Which meal choice shows you understand how to control your blood sugar?",
+      answers: [
+        { text: "Fried chicken with mashed potatoes and soda", correct: false },
+        { text: "Grilled salmon with brown rice and steamed broccoli", correct: true },
+        { text: "Pepperoni pizza and sweet tea", correct: false },
+        { text: "White bread sandwich and chips", correct: false }
+      ]
+    },
+    {
+      question: "You're learning how to check your blood sugar. When should you test it?",
+      answers: [
+        { text: "Only when I feel dizzy or tired", correct: false },
+        { text: "Before meals and at bedtime", correct: true },
+        { text: "Once a week, in the morning", correct: false },
+        { text: "After every snack", correct: false }
+      ]
+    },
+    {
+      question: "You ask how to care for your feet. Which response shows good understanding?",
+      answers: [
+        { text: "I’ll check my feet daily and wear fitted shoes.", correct: true },
+        { text: "I’ll soak my feet in hot water every night.", correct: false },
+        { text: "I’ll cut my toenails really short.", correct: false },
+        { text: "I can go barefoot at home to let my feet breathe.", correct: false }
+      ]
+    },
+    {
+      question: "You want to manage stress to help control your diabetes. Which technique is helpful?",
+      answers: [
+        { text: "Ignoring stress because it doesn’t affect blood sugar", correct: false },
+        { text: "Practicing deep breathing and daily walks", correct: true },
+        { text: "Eating comfort food during stressful days", correct: false },
+        { text: "Avoiding exercise when overwhelmed", correct: false }
+      ]
+    },
+    {
+      question: "You’re choosing a snack. Which is the best option to avoid a spike in blood sugar?",
+      answers: [
+        { text: "Fruit juice and cookies", correct: false },
+        { text: "Plain nuts and apple slices", correct: true },
+        { text: "Chocolate bar and soda", correct: false },
+        { text: "Potato chips and sweet tea", correct: false }
+      ]
+    },
+    {
+      question: "You’re reviewing signs of high blood sugar. Which symptoms should you report?",
+      answers: [
+        { text: "Shakiness and sweating", correct: false },
+        { text: "Blurred vision and frequent urination", correct: true },
+        { text: "Cold, clammy skin", correct: false },
+        { text: "Hunger and fatigue", correct: false }
+      ]
+    }
+  ];
+  
 
 // Start Game
 startButton.addEventListener('click', () => {
