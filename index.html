@@ -6,9 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Nutrition Defense Quiz</title>
     <link rel="stylesheet" href="style.css">
-    <!-- Chart.js Library -->
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <!-- Google Fonts: Balsamiq Sans -->
     <link href="https://fonts.googleapis.com/css2?family=Balsamiq+Sans:wght@400;700&display=swap" rel="stylesheet">
 
 </head>
@@ -16,7 +14,6 @@
 <body>
 
 
-<!-- Modal for Game Description -->
 <div id="modal-screen" class="modal-screen">
     <div class="modal-content">
         <h1>Welcome to Nutrition Defense Quiz!</h1>
@@ -48,10 +45,9 @@
     <audio id="wrong-sound" src="sounds/wrong.wav"></audio>
 </div>
 
-<!-- Meal Plan Generator Modal (Hidden by Default) -->
 <div id="meal-modal" class="modal hidden">
     <div class="modal-content">
-        <span class="close-modal" onclick="closeMealGenerator()">&times;</span> <!-- Close Button -->
+        <span class="close-modal" onclick="closeMealGenerator()">&times;</span> 
         <span class="close-modal">&times;</span>
         <h2>Personalized Meal Plan Generator</h2>
 
@@ -72,12 +68,10 @@
 
         <button id="generate-meal-btn" class="btn">Generate Meal Plan</button>
 
-        <!-- Loading Screen -->
         <div id="loading-screen" class="hidden">
             <p>Generating your meal plan...</p>
         </div>
 
-        <!-- Display Meal Plan -->
         <div id="meal-result" class="hidden">
             <h3>Here’s Your Personalized Meal Plan:</h3>
 

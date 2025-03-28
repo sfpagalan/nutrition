@@ -13,8 +13,8 @@ const wrongSound = document.getElementById('wrong-sound');
 const mealModal = document.getElementById('meal-modal');
 const mealResult = document.getElementById('meal-result');
 const loadingScreen = document.getElementById('loading-screen');
-const mealPlanBtn = document.getElementById('meal-plan-btn'); // First button (Statistics Screen)
-const generateMealButton = document.getElementById('generate-meal-btn'); // Second button (Modal)
+const mealPlanBtn = document.getElementById('meal-plan-btn');
+const generateMealButton = document.getElementById('generate-meal-btn');
 
 let score = 0;
 let health = 100;
@@ -23,7 +23,6 @@ let goodFoodCount = 0;
 let badFoodCount = 0;
 let mealData = null;
 
-// Fetch Meal Data
 fetch('meals.json')
     .then(response => {
         if (!response.ok) {
@@ -37,7 +36,6 @@ fetch('meals.json')
     })
     .catch(error => console.error("Error loading meals.json:", error));
 
-// First Button: Open Meal Plan Generator Modal from Statistics Screen
 if (mealPlanBtn) {
     mealPlanBtn.addEventListener('click', () => {
         mealModal.classList.remove('hidden');
@@ -45,7 +43,6 @@ if (mealPlanBtn) {
     });
 }
 
-// Second Button: Generate Meal Plan Inside Modal
 if (generateMealButton) {
     generateMealButton.addEventListener('click', () => {
         if (!mealData) {
@@ -97,7 +94,6 @@ document.querySelectorAll(".close-modal").forEach(button => {
     });
 });
 
-// Enemy and Ally Images
 const enemyImages = [
     'images/enemies/bread.png', 'images/enemies/cookies.png', 'images/enemies/fries.png',
     'images/enemies/icecream.png', 'images/enemies/soda.png', 'images/enemies/donut.png',
@@ -109,18 +105,6 @@ const allyImages = [
     'images/allies/avocado.png', 'images/allies/banana.png', 'images/allies/salmon.png',
     'images/allies/oatmeal.png', 'images/allies/eggs.png', 'images/allies/berries.png'
 ];
-
-// Define Quiz Questions
-// const questions = [
-//     { question: "Which is a complex carbohydrate?", answers: [{ text: "White bread", correct: false }, { text: "Brown rice", correct: true }] },
-//     { question: "Which type of fat is healthy?", answers: [{ text: "Trans fat", correct: false }, { text: "Monounsaturated fat", correct: true }] },
-//     { question: "Which food is high in fiber?", answers: [{ text: "Broccoli", correct: true }, { text: "Soda", correct: false }] },
-//     { question: "Which vitamin helps control blood sugar?", answers: [{ text: "Vitamin D", correct: true }, { text: "Vitamin C", correct: false }] },
-//     { question: "Best fruit for diabetics?", answers: [{ text: "Berries", correct: true }, { text: "Banana", correct: false }] },
-//     { question: "Which type of exercise is best for diabetes?", answers: [{ text: "Aerobic", correct: true }, { text: "None", correct: false }] },
-//     { question: "What is a good snack for diabetics?", answers: [{ text: "Nuts", correct: true }, { text: "Candy", correct: false }] },
-//     { question: "Which drink is better for diabetics?", answers: [{ text: "Water", correct: true }, { text: "Soda", correct: false }] }
-// ];
 
 const questions = [
     {
@@ -180,11 +164,10 @@ const questions = [
   ];
   
 
-// Start Game
 startButton.addEventListener('click', () => {
     modalScreen.style.display = 'none';
     gameContainer.classList.remove('hidden');
-    questionContainer.classList.remove('hidden'); // Ensure question container is visible
+    questionContainer.classList.remove('hidden');
     startGame();
 });
 
@@ -200,7 +183,6 @@ function startGame() {
     setNextQuestion();
 }
 
-// Spawn Food on Both Sides
 function spawnFoods() {
     document.querySelector('.left-side').innerHTML = '';
     document.querySelector('.right-side').innerHTML = '';
@@ -247,7 +229,7 @@ function showQuestion(question) {
 }
 
 function resetState() {
-    answerButtonsElement.innerHTML = ''; // Clear previous answers
+    answerButtonsElement.innerHTML = ''; 
 }
 
 function selectAnswer(e) {
@@ -277,7 +259,6 @@ function endGame() {
     showStatistics();
 }
 
-// Show Statistics and Meal Plan Option
 function showStatistics() {
     const totalFoods = goodFoodCount + badFoodCount;
     const healthyPercentage = Math.round((badFoodCount / totalFoods) * 100);
@@ -299,7 +280,7 @@ function showStatistics() {
         
         <button onclick="location.reload()" class="btn">Play Again</button>
         <button id="meal-plan-btn" class="btn">Generate Meal Plan</button>
-    `; // ✅ Closing template string correctly
+    `; 
 
     statisticsScreen.style.display = 'block';
     statisticsScreen.style.marginTop = '20px';
@@ -307,11 +288,9 @@ function showStatistics() {
     statisticsScreen.style.borderRadius = '10px';
     statisticsScreen.style.backgroundColor = 'rgba(255, 255, 255, 0.9)';
 
-    // Wait for DOM to update before initializing chart
     setTimeout(() => {
         const ctx = document.getElementById('lifestyleChart').getContext('2d');
 
-        // Check if there are remaining enemies and allies
         const hasAllies = allyImages.length > goodFoodCount;
         const hasEnemies = enemyImages.length > badFoodCount;
 
@@ -322,35 +301,35 @@ function showStatistics() {
                 datasets: [{
                     data: [badFoodCount, goodFoodCount],
                     backgroundColor: [
-                        hasAllies ? '#4CAF50' : '#d3d3d3',  // Green for allies, gray if none left
-                        hasEnemies ? '#FF6F61' : '#d3d3d3'   // Red for enemies, gray if none left
+                        hasAllies ? '#4CAF50' : '#d3d3d3', 
+                        hasEnemies ? '#FF6F61' : '#d3d3d3' 
                     ],
                     borderWidth: 1
                 }]
             },
             options: {
-                responsive: false,  // Disable responsive resizing
-                maintainAspectRatio: false,  // Prevent aspect ratio enforcement
+                responsive: false, 
+                maintainAspectRatio: false, 
                 plugins: {
                     legend: {
                         display: true,
-                        position: 'bottom',  // Move legend to the bottom
+                        position: 'bottom', 
                         labels: {
-                            boxWidth: 20,         // Smaller legend boxes
-                            padding: 10,          // Padding between legend items
-                            usePointStyle: true,  // Use circles instead of squares for legend markers
-                            color: '#333'         // Text color for legend
+                            boxWidth: 20,
+                            padding: 10,
+                            usePointStyle: true,
+                            color: '#333'
                         },
                     }
                 },
                 layout: {
                     padding: {
-                        bottom: 20  // Extra space for horizontal legend
+                        bottom: 20  
                     }
                 }
             }
         });
-    }, 100); // Small delay to ensure the canvas element is present
+    }, 100); 
 
     document.getElementById('meal-plan-btn').addEventListener('click', () => {
         mealModal.classList.remove('hidden');
@@ -358,29 +337,24 @@ function showStatistics() {
     });
 }
 
-// ✅ Fix: Close Meal Generator
 function closeMealGenerator() {
     mealModal.classList.add('hidden');
     statisticsScreen.classList.remove('hidden');
 }
 
-// ✅ Fix: Restart Meal Generator
 function restartMealGenerator() {
     document.getElementById('meal-result').classList.add('hidden');
     document.getElementById('meal-generator').classList.remove('hidden');
 }
 
-// ✅ Attach event listener for close button
 document.querySelectorAll(".close-modal").forEach(button => {
     button.addEventListener("click", closeMealGenerator);
 });
 
-// Function to Generate Random Meal
 function getRandomMeal(arr) {
     return arr[Math.floor(Math.random() * arr.length)];
 }
 
-// Format Meal Display
 function formatMealCard(meal) {
     return `<h3>${meal.name}</h3><img src="${meal.image}" alt="${meal.name}"><p>${meal.description}</p>`;
 }
